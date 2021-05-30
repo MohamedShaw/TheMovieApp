@@ -1,5 +1,5 @@
 import defaultAxios from 'axios';
 
-const baseURL = 'https://holy-reserve-vzu1f10bvyfd.vapor-farm-a1.com/api/v2';
+const baseURL = 'https://api.themoviedb.org/';
 
 export const api = defaultAxios.create({baseURL});
