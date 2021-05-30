@@ -1,27 +1,47 @@
 import {api} from '@src/api';
 import {API_KEY} from '@src/api/key';
-import {useQuery} from 'react-query';
+import {useInfiniteQuery, useQuery} from 'react-query';
 
 const KEY = 'Movies';
 
 export interface Movies {
-  card_provider: 'MasterCard' | 'Visa';
-  default: boolean;
-  holder_name: string;
-  masked_card: string;
-  uuid: string;
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: [];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
 }
 
-async function fetchMovies(type: string) {
+async function fetchMovies(page: number, type: string) {
   return await api
-    .get<Movies[]>(`movie/upcoming?api_key=${API_KEY}`)
-    .then(res => res.data);
+    .get(`movie/${type}?api_key=${API_KEY}&page=${page}`)
+    .then<{results: Movies[]; page: number; total_pages: number}>(res => {
+      console.log('res -->>', res);
+
+      return res.data;
+    });
 }
 
-export function useMovies({type} = {type: 'upcomming'}) {
-  const {data = [], ...rest} = useQuery([KEY, type], () => fetchMovies(type));
-  console.log("data", data);
-  
+export function useMovies(type: string) {
+  const {data, ...rest} = useInfiniteQuery(
+    [KEY, type],
+    ({pageParam = 1}) => fetchMovies(pageParam, type),
+    {
+      getNextPageParam: pageData => {
+        if (pageData.page >= pageData.total_pages) return undefined;
+        return pageData.page + 1;
+      },
+    },
+  );
 
-  return {movies: data, ...rest};
+  return {movies: data?.pages.flat()[0].results, ...rest};
 }

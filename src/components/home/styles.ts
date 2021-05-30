@@ -3,6 +3,13 @@ import {aspectRatio} from '@src/utils/responsiveDimmensions';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+  header: {
+    height: 76,
+    alignSelf: 'stretch',
+    paddingHorizontal: 20,
+    justifyContent: 'center',
+    backgroundColor: colors.white,
+  },
   container: {
     height: aspectRatio * 90,
     backgroundColor: colors.white,
@@ -23,8 +30,8 @@ export const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 15,
   },
-  centerContainer: {flex: 2, alignSelf: 'stretch', marginStart: 10},
-  title: {fontSize: 30, color: colors.black2, fontWeight: '800'},
+  centerContainer: {flex: 3, alignSelf: 'stretch', marginStart: 10},
+  title: {fontSize: 20, color: colors.black2, fontWeight: '800'},
   date: {fontSize: 20, color: colors.lightGrey},
   tagsContainer: {
     flexWrap: 'wrap',
@@ -44,5 +51,18 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.lightGrey,
     marginEnd: 5,
     marginTop: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  listContainer: {
+    flex: 1,
+    backgroundColor: colors.white,
+    alignSelf: 'stretch',
+    paddingTop: 25,
+  },
+  listCompleteText: {
+    color: 'red',
+    height: 100,
+    textAlign: 'center',
   },
 });

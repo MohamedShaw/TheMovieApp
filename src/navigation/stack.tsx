@@ -7,6 +7,7 @@ import {createNativeStackNavigator} from 'react-native-screens/native-stack';
 import * as Screens from '@src/screens';
 import {routeNames} from './routeNames';
 import {Screen, screens} from './types';
+import {CategoryNavigator} from './CategoriesNavigator';
 
 const appStack = createNativeStackNavigator();
 
@@ -20,7 +21,9 @@ export function Stack() {
           statusBarStyle: 'dark',
         }}
         initialRouteName={routeNames.home}>
-        {screens.map((screen: Screen) => (
+        <appStack.Screen name="home" component={CategoryNavigator} />
+
+        {/* {screens.map((screen: Screen) => (
           <appStack.Screen
             key={screen.name}
             name={screen.name}
@@ -29,7 +32,7 @@ export function Stack() {
               statusBarStyle: 'light',
             }}
           />
-        ))}
+        ))} */}
       </appStack.Navigator>
     </NavigationContainer>
   );

@@ -1,22 +1,23 @@
+import {Movies} from '@src/hooks/useMovies';
 import {colors} from '@src/theme';
 import React from 'react';
 import {Image, View} from 'react-native';
 import {Text} from '../Text';
 import {styles} from './styles';
 
-export function CardItem() {
+export function CardItem({title, release_date, poster_path}: Movies) {
   return (
     <View style={styles.container}>
       <Image
-        source={require('@src/assets/arrowLeft.png')}
+        source={{uri: `https://api.themoviedb.org/3${poster_path}`}}
         style={styles.image}
       />
       <View style={styles.centerContainer}>
-        <Text style={styles.title}>{'hamas'}</Text>
-        <Text style={styles.date}>{'hamas'}</Text>
+        <Text style={styles.title} numberOfLines={2}>
+          {title}
+        </Text>
+        <Text style={styles.date}>{release_date}</Text>
         <View style={styles.tagsContainer}>
-          <Tags />
-          <Tags />
           <Tags />
         </View>
       </View>
@@ -28,5 +29,9 @@ export function CardItem() {
 }
 
 function Tags() {
-  return <View style={styles.tags}></View>;
+  return (
+    <View style={styles.tags}>
+      <Text>Action</Text>
+    </View>
+  );
 }
