@@ -1,4 +1,5 @@
 import {api} from '@src/api';
+import {API_KEY} from '@src/api/key';
 import {useQuery} from 'react-query';
 
 const KEY = 'Movies';
@@ -12,11 +13,15 @@ export interface Movies {
 }
 
 async function fetchMovies(type: string) {
-  return await api.get<Movies[]>('credit/list').then(res => res.data);
+  return await api
+    .get<Movies[]>(`movie/upcoming?api_key=${API_KEY}`)
+    .then(res => res.data);
 }
 
 export function useMovies({type} = {type: 'upcomming'}) {
   const {data = [], ...rest} = useQuery([KEY, type], () => fetchMovies(type));
+  console.log("data", data);
+  
 
   return {movies: data, ...rest};
 }
