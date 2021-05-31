@@ -6,5 +6,6 @@ export const colors = {
   black2: '#242034',
 
   lightGrey: '#C4C4C4',
-  green:'green'
+  green:'green',
+  spinner:'#179F88'
 };

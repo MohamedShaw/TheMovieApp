@@ -7,7 +7,7 @@ interface Props extends ActivityIndicatorProps {
   active?: boolean
 }
 
-export function AppSpinner({color = colors.secondary, active = true}: Props) {
+export function AppSpinner({color = colors.spinner, active = true}: Props) {
   if (!active) return null
   return <ActivityIndicator color={color} />
 }

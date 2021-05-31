@@ -5,11 +5,16 @@ import {Image, View} from 'react-native';
 import {Text} from '../Text';
 import {styles} from './styles';
 
-export function CardItem({title, release_date, poster_path}: Movies) {
+export function CardItem({
+  title,
+  release_date,
+  poster_path,
+  vote_average,
+}: Movies) {
   return (
     <View style={styles.container}>
       <Image
-        source={{uri: `https://api.themoviedb.org/3${poster_path}`}}
+        source={{uri: `http://image.tmdb.org/t/p/w500/${poster_path}`}}
         style={styles.image}
       />
       <View style={styles.centerContainer}>
@@ -22,7 +27,7 @@ export function CardItem({title, release_date, poster_path}: Movies) {
         </View>
       </View>
       <View style={styles.percent}>
-        <Text style={styles.percentTxt}>{'86 %'}</Text>
+        <Text style={styles.percentTxt}>{`${vote_average} %`}</Text>
       </View>
     </View>
   );
