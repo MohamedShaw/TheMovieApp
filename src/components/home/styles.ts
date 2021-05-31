@@ -25,6 +25,11 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     flexDirection: 'row',
   },
+  button:{
+    flexDirection: 'row',
+    flex:1,
+    alignSelf:'stretch'
+  },
   image: {
     width: '30%',
     height: '100%',
@@ -36,7 +41,8 @@ export const styles = StyleSheet.create({
   tagsContainer: {
     flexWrap: 'wrap',
     flexDirection: 'row',
-    marginTop:10
+    marginTop:10,
+    zIndex:1000
   },
   percent: {
     justifyContent: 'flex-end',

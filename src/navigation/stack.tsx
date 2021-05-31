@@ -21,9 +21,9 @@ export function Stack() {
           statusBarStyle: 'dark',
         }}
         initialRouteName={routeNames.home}>
-        <appStack.Screen name="home" component={CategoryNavigator} />
+        <appStack.Screen name={routeNames.home} component={CategoryNavigator} />
 
-        {/* {screens.map((screen: Screen) => (
+        {screens.map((screen: Screen) => (
           <appStack.Screen
             key={screen.name}
             name={screen.name}
@@ -32,7 +32,7 @@ export function Stack() {
               statusBarStyle: 'light',
             }}
           />
-        ))} */}
+        ))}
       </appStack.Navigator>
     </NavigationContainer>
   );

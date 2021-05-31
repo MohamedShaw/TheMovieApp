@@ -1,8 +1,9 @@
+import {useNavigation} from '@react-navigation/native';
 import {Movies} from '@src/hooks/useMovies';
-import {colors} from '@src/theme';
+import {routeNames} from '@src/navigation/routeNames';
 import React from 'react';
-import {Alert, Image, TouchableOpacity, View} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import {ScrollView, Image, TouchableOpacity, View} from 'react-native';
+import {RectButton} from 'react-native-gesture-handler';
 import {Text} from '../Text';
 import {styles} from './styles';
 
@@ -34,14 +35,17 @@ export function CardItem({
   vote_average,
   genre_ids,
 }: Movies) {
+  const {navigate} = useNavigation();
   let genries: {id: number; name: string}[] = [];
   if (genre_ids.length) {
     genries = Generies.filter(item => genre_ids.find(id => id === item.id));
   }
 
   return (
-    <TouchableOpacity onPress={() => Alert.alert('4')}>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <RectButton
+        onPress={() => navigate(routeNames.movieDetails)}
+        style={styles.button}>
         <Image
           source={{uri: `http://image.tmdb.org/t/p/w500/${poster_path}`}}
           style={styles.image}
@@ -62,8 +66,8 @@ export function CardItem({
         <View style={styles.percent}>
           <Text style={styles.percentTxt}>{`${vote_average} %`}</Text>
         </View>
-      </View>
-    </TouchableOpacity>
+      </RectButton>
+    </View>
   );
 }
 

@@ -40,8 +40,11 @@ export function useMovies(type: string) {
         if (pageData.page >= pageData.total_pages) return undefined;
         return pageData.page + 1;
       },
+      keepPreviousData: true,
     },
   );
 
-  return {movies: data?.pages.flat()[0].results, ...rest};
+  const results = data?.pages.flat().map(item => item.results);
+
+  return {movies: results.flat() || [], ...rest};
 }
