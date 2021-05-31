@@ -33,11 +33,9 @@ export interface Movies {
 }
 
 async function fetchMovieDetails(id: number) {
-  return await api.get(`movie/${id}?api_key=${API_KEY}`).then<Movies>(res => {
-    console.log('res -->>', res);
-
-    return res.data;
-  });
+  return await api
+    .get(`movie/${id}?api_key=${API_KEY}`)
+    .then<Movies>(res => res.data);
 }
 
 export function useMovieDetails(id: number) {

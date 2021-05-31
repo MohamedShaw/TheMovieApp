@@ -28,11 +28,7 @@ export interface CreditsData {
 async function fetchMovieCredits(id: number) {
   return await api
     .get(`movie/${id}/credits?api_key=${API_KEY}`)
-    .then<CreditsData>(res => {
-      console.log('res  credits -->>', res);
-
-      return res.data;
-    });
+    .then<CreditsData>(res => res.data);
 }
 
 export function useMovieCredits(id: number) {

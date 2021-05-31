@@ -24,11 +24,9 @@ export interface Movies {
 async function fetchMovies(page: number, type: string) {
   return await api
     .get(`movie/${type}?api_key=${API_KEY}&page=${page}`)
-    .then<{results: Movies[]; page: number; total_pages: number}>(res => {
-      console.log('res -->>', res);
-
-      return res.data;
-    });
+    .then<{results: Movies[]; page: number; total_pages: number}>(
+      res => res.data,
+    );
 }
 
 export function useMovies(type: string) {

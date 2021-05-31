@@ -28,15 +28,15 @@ export function Credits({credits}: Props) {
 
 function CreditCard({profile_path, name}: CastCrewData) {
   let image = profile_path;
+  // if profile_path is null it will be set as image of movie
 
   const {profile_path: imageOfMovie} = useProfile();
-  console.log("imageOfMovie",imageOfMovie);
+
   
 
   if (image === null) {
     image = imageOfMovie;
   }
-  console.log('profile', image);
 
   return (
     <View style={{alignItems: 'center', marginEnd: 15}}>

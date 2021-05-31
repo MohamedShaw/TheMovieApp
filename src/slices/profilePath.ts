@@ -12,8 +12,6 @@ const profileImageSlice = createSlice({
   initialState,
   reducers: {
     onSetImage(state, action: PayloadAction<any>) {
-        console.log("type", action.payload);
-        
       state.profile_path = action.payload;
     },
   },
