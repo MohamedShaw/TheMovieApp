@@ -5,8 +5,8 @@ import {Text} from '../Text';
 import {styles} from './styles';
 
 interface Props {
-  title: string;
-  average_rate: string;
+  title?: string;
+  average_rate?: number;
 }
 export function MovieTitle({title, average_rate}: Props) {
   return (

@@ -22,9 +22,7 @@ export function ListMovies({route}: Props) {
     fetchNextPage,
     refetch,
     hasNextPage,
-    isFetchingNextPage,
 
-    isFetched,
     isLoading,
   } = useMovies(route?.params.type);
 

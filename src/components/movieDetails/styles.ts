@@ -9,8 +9,8 @@ export const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
   image: {
-    width: 70 * aspectRatio,
-    height: 100 * aspectRatio,
+    width: 65 * aspectRatio,
+    height: 105 * aspectRatio,
     borderRadius: 10,
   },
   center: {alignItems: 'center', alignSelf: 'stretch', paddingHorizontal: 20},
@@ -28,8 +28,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   overView: {
-    fontSize: 25,
-    fontWeight: 'bold',
+    fontSize: 12,
   },
   genres: {
     fontSize: 20,
@@ -38,7 +37,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     paddingHorizontal: 20,
-    marginBottom: 10,
+    // marginBottom: 10,
   },
   creditsText: {
     fontSize: 25,
