@@ -1,4 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
+import {IMAGE_URI} from '@src/api/key';
 import {Movies} from '@src/hooks/useMovies';
 import {routeNames} from '@src/navigation/routeNames';
 import React from 'react';
@@ -28,6 +29,10 @@ const Generies = [
   {id: 10752, name: 'War'},
   {id: 37, name: 'Western'},
 ];
+type GenresItem = {
+  id: number;
+  name: string;
+};
 export function CardItem({
   title,
   release_date,
@@ -36,7 +41,7 @@ export function CardItem({
   genre_ids,
 }: Movies) {
   const {navigate} = useNavigation();
-  let genries: {id: number; name: string}[] = [];
+  let genries: GenresItem[] = [];
   if (genre_ids.length) {
     genries = Generies.filter(item => genre_ids.find(id => id === item.id));
   }
@@ -47,7 +52,7 @@ export function CardItem({
         onPress={() => navigate(routeNames.movieDetails)}
         style={styles.button}>
         <Image
-          source={{uri: `http://image.tmdb.org/t/p/w500/${poster_path}`}}
+          source={{uri: `${IMAGE_URI}${poster_path}`}}
           style={styles.image}
         />
         <View style={styles.centerContainer}>
@@ -55,13 +60,7 @@ export function CardItem({
             {title}
           </Text>
           <Text style={styles.date}>{release_date}</Text>
-          <View style={styles.tagsContainer}>
-            <ScrollView style={styles.tagsContainer} horizontal>
-              {genries?.map(item => (
-                <Tags {...item} />
-              ))}
-            </ScrollView>
-          </View>
+          <Genres genres={genries} />
         </View>
         <View style={styles.percent}>
           <Text style={styles.percentTxt}>{`${vote_average} %`}</Text>
@@ -79,6 +78,21 @@ function Tags({id, name}: PropsTags) {
   return (
     <View style={styles.tags}>
       <Text>{name}</Text>
+    </View>
+  );
+}
+
+interface GenresProps {
+  genres: GenresItem[];
+}
+export function Genres({genres}: GenresProps) {
+  return (
+    <View style={styles.tagsContainer}>
+      <ScrollView style={styles.tagsContainer} horizontal>
+        {genres?.map(item => (
+          <Tags {...item} />
+        ))}
+      </ScrollView>
     </View>
   );
 }

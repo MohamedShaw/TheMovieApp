@@ -25,10 +25,10 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     flexDirection: 'row',
   },
-  button:{
+  button: {
     flexDirection: 'row',
-    flex:1,
-    alignSelf:'stretch'
+    flex: 1,
+    alignSelf: 'stretch',
   },
   image: {
     width: '30%',
@@ -37,12 +37,11 @@ export const styles = StyleSheet.create({
   },
   centerContainer: {flex: 3, alignSelf: 'stretch', marginStart: 10},
   title: {fontSize: 20, color: colors.black2, fontWeight: '800'},
-  date: {fontSize: 20, color: colors.lightGrey},
+  date: {fontSize: 20, color: colors.lightGrey, marginBottom: 10},
   tagsContainer: {
     flexWrap: 'wrap',
     flexDirection: 'row',
-    marginTop:10,
-    zIndex:1000
+    zIndex: 1000,
   },
   percent: {
     justifyContent: 'flex-end',

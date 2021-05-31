@@ -46,5 +46,5 @@ export function useMovies(type: string) {
 
   const results = data?.pages.flat().map(item => item.results);
 
-  return {movies: results.flat() || [], ...rest};
+  return {movies: results?.flat() || [], ...rest};
 }
