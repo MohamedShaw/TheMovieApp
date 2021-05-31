@@ -1,21 +1,19 @@
-import {RouteProp} from '@react-navigation/native';
 import {AppSpinner, CardItem, Text} from '@src/components';
 import {AppList} from '@src/components/List';
 import {useMovies} from '@src/hooks';
 import {Movies} from '@src/hooks/useMovies';
-import {NavigationT} from '@src/navigation/types';
 
 import React from 'react';
 import {View} from 'react-native';
 import {styles} from './styles';
-type CategoryT = {
+type MovieItem = {
   name: string;
   type: string;
 };
 
 interface Props {
   route: {
-    params: CategoryT;
+    params: MovieItem;
   };
 }
 export function ListMovies({route}: Props) {
@@ -52,7 +50,6 @@ export function ListMovies({route}: Props) {
           alignSelf: 'stretch',
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: 'red',
         }}
       />
     </View>

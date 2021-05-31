@@ -36,6 +36,7 @@ export const styles = StyleSheet.create({
   tagsContainer: {
     flexWrap: 'wrap',
     flexDirection: 'row',
+    marginTop:10
   },
   percent: {
     justifyContent: 'flex-end',
@@ -45,7 +46,7 @@ export const styles = StyleSheet.create({
   },
   percentTxt: {fontSize: 20, color: colors.green},
   tags: {
-    paddingHorizontal: 25,
+    paddingHorizontal: 10,
     height: 30,
     borderRadius: 25,
     backgroundColor: colors.lightGrey,
